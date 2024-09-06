@@ -1,0 +1,4 @@
+.formatted-text {
+    white-space: pre-line; /* ใช้การตัดบรรทัดตามที่เขียนใน HTML */
+    line-height: 1.6; /* เพิ่มระยะห่างระหว่างบรรทัด */
+}

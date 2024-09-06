@@ -1,0 +1,10 @@
+.blur-box {
+    position: relative;
+    background: rgba(255, 255, 255, 0.2); /* พื้นหลังโปร่งแสง */
+    border-radius: 15px; /* ความโค้งของขอบ */
+    padding: 20px; /* ระยะห่างจากขอบ */
+    backdrop-filter: blur(10px); /* เอฟเฟกต์เบลอ */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* เงาเบลอรอบกล่อง */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* ขอบโปร่งแสง */
+}
+

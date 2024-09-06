@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติสงขลา</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* overflow: hidden; */ /* ลบส่วนนี้ออก */
+        }
+
+        .bg-image {
+            background-image: url('รูป2.jpg'); /* ใช้ภาพพื้นหลังของคุณ */
+            -webkit-filter: blur(8px);
+            filter: blur(8px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .welcome-text {
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            z-index: 1;
+            opacity: 0; /* ซ่อนไว้ก่อนเพื่อเริ่มการแอนิเมชัน */
+            margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างข้อความและปุ่ม */
+        }
+
+        .welcome-text button {
+            margin-top: 10px; /* ลดระยะห่างระหว่างปุ่มและข้อความ */
+            padding: 10px 20px; /* ปรับขนาดปุ่ม */
+            font-size: 18px; /* ขนาดข้อความในปุ่ม */
+            border: 2px solid white;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 30px; /* ขอบกลม */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .formatted-text {
+            white-space: pre-line; /* ใช้การตัดบรรทัดตามที่เขียนใน HTML */
+            line-height: 1.6; /* เพิ่มระยะห่างระหว่างบรรทัด */
+        }
+
+        .welcome-text button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 2s forwards; /* แอนิเมชันเลื่อนจากซ้าย */
+        }
+
+        .slide-in-right {
+            animation: slideInRight 2s forwards; /* แอนิเมชันเลื่อนจากขวา */
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100vw); /* เริ่มจากนอกหน้าจอทางด้านซ้าย */
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100vw); /* เริ่มจากนอกหน้าจอทางด้านขวา */
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* CSS สำหรับ Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* พื้นหลังดำพร้อมความโปร่งแสง */
+            z-index: 2;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .overlay-content {
+            max-width: 800px;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 20px; /* ขนาดข้อความใน overlay เท่ากับโค้ดที่ให้ */
+            overflow-y: scroll; /* เพิ่มเพื่อให้สามารถเลื่อนดูเนื้อหาที่มีความยาวได้ */
+            max-height: 80vh; /* จำกัดความสูงของ overlay content */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- ภาพพื้นหลังที่เบลอ -->
+    <div class="bg-image"></div>
+
+    <!-- ข้อความและปุ่ม -->
+    <div class="welcome-text" id="welcome-text">
+        <h1>ประวัติสงขลา</h1>
+        <button onclick="playSoundAndOpenOverlay()">
+            เปิดอ่าน
+        </button>
+    </div>
+
+    <!-- Overlay สำหรับแสดงประวัติ -->
+    <div class="overlay" id="overlay">
+        <div class="close-btn" onclick="closeOverlay()">&times;</div>
+        <div class="overlay-content">
+            <h1>ประวัติสงขลา</h1>
+            <p class="formatted-text">
+                สงขลาเป็นจังหวัดที่มีประวัติศาสตร์และวัฒนธรรมยาวนาน และเป็นเมืองที่มีความสำคัญทางประวัติศาสตร์ในภาคใต้ของประเทศไทย นี่คือประวัติที่สำคัญของสงขลา:
+        
+                ประวัติศาสตร์ก่อนสมัยกรุงรัตนโกสินทร์
+        
+                1.ยุคก่อนประวัติศาสตร์: หลักฐานทางโบราณคดีพบว่าแถบจังหวัดสงขลามีการตั้งถิ่นฐานมนุษย์มาตั้งแต่สมัยก่อนประวัติศาสตร์ โดยมีการค้นพบเครื่องมือหินและเศษภาชนะที่มีอายุหลายพันปี ซึ่งแสดงให้เห็นว่าบริเวณนี้เคยเป็นศูนย์กลางการตั้งถิ่นฐานที่สำคัญ
+        
+                2.อาณาจักรศรีวิชัย: ในช่วงศตวรรษที่ 7-13 สงขลาตกอยู่ภายใต้อิทธิพลของอาณาจักรศรีวิชัย ซึ่งเป็นอาณาจักรที่มีอำนาจในภูมิภาคเอเชียตะวันออกเฉียงใต้และเป็นศูนย์กลางการค้าสำคัญ
+        
+                3.อาณาจักรสุโขทัย: ในช่วงศตวรรษที่ 13-14 สงขลาเป็นส่วนหนึ่งของอาณาจักรสุโขทัย ก่อนที่จะตกไปอยู่ภายใต้อาณาจักรล้านนาและอาณาจักรอู่ทอง
+        
+                ประวัติศาสตร์ในสมัยกรุงรัตนโกสินทร์
+        
+                1.สมัยกรุงศรีอยุธยา: ในช่วงสมัยกรุงศรีอยุธยา สงขลามีความสำคัญในด้านการค้าและการทหาร เนื่องจากตั้งอยู่บนเส้นทางการค้าสำคัญระหว่างไทยและภูมิภาคอื่นๆ
+        
+                2.สมัยกรุงรัตนโกสินทร์: หลังจากกรุงศรีอยุธยาเสียกรุง สงขลามีบทบาทสำคัญในด้านการค้าและเศรษฐกิจของประเทศ โดยเฉพาะการค้ากับประเทศในภูมิภาคเอเชียตะวันออกเฉียงใต้และจีน
+        
+                สงขลาสมัยปัจจุบัน
+        
+                1.การพัฒนาและการเมือง: ในศตวรรษที่ 20 สงขลามีการพัฒนาอย่างรวดเร็ว โดยมีการสร้างโครงสร้างพื้นฐานต่างๆ เช่น ถนนและท่าเรือ รวมถึงการเปิดโรงงานและสถานประกอบการต่างๆ นอกจากนี้ยังมีการพัฒนาด้านการศึกษาและวัฒนธรรม
+        
+                2.เศรษฐกิจและการท่องเที่ยว: ปัจจุบันสงขลามีเศรษฐกิจที่เจริญรุ่งเรือง โดยมีการพัฒนาในด้านการค้า การท่องเที่ยว และการบริการ นอกจากนี้ยังเป็นเมืองที่มีความสวยงามทางธรรมชาติ เช่น ทะเลสาบสงขลา และชายหาดที่สวยงาม
+        
+                3.วัฒนธรรมและประเพณี: สงขลามีวัฒนธรรมที่หลากหลายและมีประเพณีที่มีความสำคัญ เช่น การฉลองเทศกาลสงกรานต์และการจัดงานประเพณีท้องถิ่น
+        
+                สงขลายังคงเป็นเมืองที่มีความสำคัญในด้านการค้า เศรษฐกิจ และวัฒนธรรม และยังคงดึงดูดนักท่องเที่ยวจากทั่วโลกที่มาสัมผัสกับความงดงามและเอกลักษณ์ของเมืองนี้
+            </p>
+        </div>        
+    </div>
+
+    <!-- แท็กเสียงสำหรับปุ่ม -->
+    <audio id="click-sound">
+        <source src="เพลง2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- แท็กเสียงสำหรับเพลงพื้นหลัง -->
+    <audio id="bg-music" loop>
+        <source src="เพลง1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // เล่นเพลงพื้นหลังเมื่อหน้าเว็บโหลดเสร็จ
+        window.onload = function() {
+            var bgMusic = document.getElementById('bg-music');
+            bgMusic.play(); // เล่นเพลงพื้นหลังเมื่อหน้าเว็บโหลดเสร็จ
+        }
+
+        function playSoundAndOpenOverlay() {
+            var audio = document.getElementById('click-sound');
+            audio.play(); // เล่นเสียงเมื่อคลิกปุ่ม
+            setTimeout(function() {
+                openOverlay(); // เปิด overlay หลังจากเสียงเล่น
+            }, 300); // หน่วงเวลา 0.3 วินาทีเพื่อให้เสียงเล่นก่อนเปิด overlay
+        }
+
+        function openOverlay() {
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Randomly choose animation direction
+        document.addEventListener("DOMContentLoaded", function() {
+            var welcomeText = document.getElementById('welcome-text');
+            var random = Math.random();
+            if (random < 0.5) {
+                welcomeText.classList.add('slide-in-right');
+            } else {
+                welcomeText.classList.add('slide-in-left');
+            }
+            welcomeText.style.opacity = 1; // Show the element
+        });
+    </script>
+</body>
+</html>

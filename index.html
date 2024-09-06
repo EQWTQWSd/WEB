@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page with Background Music</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            background-image: url('รูปหลัก.jpg'); /* ใส่ภาพพื้นหลังของคุณ */
+            -webkit-filter: blur(8px);
+            filter: blur(8px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .welcome-text {
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            z-index: 1;
+            padding: 20px;
+            /* ลบเส้นขอบที่นี่ */
+            display: inline-block;
+            /* ลบสีพื้นหลังที่นี่ */
+            opacity: 0;
+            animation: fadeInUp 2s ease-in-out forwards;
+        }
+
+        .welcome-text button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: 2px solid white;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s, color 0.3s;
+            opacity: 0;
+            animation: fadeInUp 2.5s ease-in-out forwards;
+        }
+
+        .welcome-text button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+
+    <div class="welcome-text">
+        ยินดีต้อนรับสู่สงขลา
+        <br>
+        <button onclick="playAndRedirect()">กดเพื่อดูประวัติ</button>
+    </div>
+
+    <!-- แท็กเสียง -->
+    <audio id="bg-audio">
+        <source src="เพลง2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // เล่นเสียงเมื่อหน้าเว็บโหลดเสร็จ
+        window.onload = function() {
+            var audio = document.getElementById('bg-audio');
+            audio.play(); // เล่นเพลงเมื่อหน้าเว็บโหลดเสร็จ
+        }
+
+        // ฟังก์ชันสำหรับเล่นเสียงและเปลี่ยนหน้าเมื่อคลิกปุ่ม
+        function playAndRedirect() {
+            var audio = document.getElementById('bg-audio');
+            audio.play(); // เล่นเสียง
+            setTimeout(function() {
+                window.location.href = "page2.html"; // เปลี่ยนหน้าไปยัง page2.html
+            }, 500); // หน่วงเวลา 0.5 วินาทีเพื่อให้เสียงเล่นแล้วค่อยเปลี่ยนหน้า
+        }
+    </script>
+</body>
+</html>
